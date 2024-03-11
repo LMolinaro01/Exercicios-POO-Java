@@ -1,6 +1,6 @@
 /*Agrupamento de Objetos em Java -> Organização de Objetos em Base de critérios. Não é um conceito de POO, mas é comum em interaçõs com bancos de dados, semelhando ao "group by" do SQL
 
-Coleções: Set, List, Queue, Deque
+Coleções: Set, List, Queue, Deque e etc
 
 - Collection (Coleção): É como o chefe de todas as coleções. Ele define operações básicas que todas as coleções devem ter, como adicionar, remover e esvaziar.
 

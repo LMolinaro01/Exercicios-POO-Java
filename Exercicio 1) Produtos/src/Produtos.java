@@ -6,10 +6,10 @@ public class Produtos {
     private float valor;
     private int qtde;
 
+    /*Atributos Privados: Acessíveis apenas dentro da própria classe Produtos. Isso, encapsula o estado interno da classe e evita acessos diretos externos */
+
     public Produtos() {
     } // Ao instanciar o objeto, será necessário usar o set para passar os atributos necessários
-
-
 
     public Produtos(String nome, String marca, float valor, int qtde) {
         this.nome = nome;
@@ -19,6 +19,7 @@ public class Produtos {
         this.qtde = qtde;
         // Construtor que usa parâmetros ao instanciar o objeto
     }
+
 
     public void setNome(String nome) {
         this.nome = nome; // permite passar os atributos, antes era apenas por parâmetro, visto que a variável era privada.
@@ -45,6 +46,8 @@ public class Produtos {
 
     }
 
+    //Método Get: é fornecido para permitir que outras classes obtenham esses valores de forma controlada. Isso é uma comum prática de encapsulamento para fornecer acesso controlado aos atributos privados.
+
     public String getNome() {
         return this.nome; // Retorna a variável nome, ela não é retornável ao privar a variável nome da linha 3
 
@@ -61,6 +64,9 @@ public class Produtos {
     public int getQtde() {
         return this.qtde;
     }
+
+
+
 
     @Override
     public String toString() {

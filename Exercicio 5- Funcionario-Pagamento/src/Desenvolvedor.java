@@ -8,19 +8,19 @@ class Desenvolvedor extends Funcionario {
         this.salarioHora = salarioHora;
     }
 
-    public int getHorasTrabalhadas(){
+    public int getHorasTrabalhadas() {
         return horasTrabalhadas;
     }
 
-    public double getSalarioHora(){
+    public double getSalarioHora() {
         return salarioHora;
     }
 
-    public void setHorasTrabalhadas(int horasTrabalhadas){
+    public void setHorasTrabalhadas(int horasTrabalhadas) {
         this.horasTrabalhadas = horasTrabalhadas;
     }
 
-    public void setSalarioHora(double salarioHora){
+    public void setSalarioHora(double salarioHora) {
         this.salarioHora = salarioHora;
     }
 

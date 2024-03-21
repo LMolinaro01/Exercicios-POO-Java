@@ -12,7 +12,7 @@
 ## Getters e Setters
 
 ```
-public class Produtos {
+public class Produtos { //Criação da Classe
 
     private String nome; // quando está private, só é possivel passar os atributos do objeto atrvés de parâmetros e usando o método set
 

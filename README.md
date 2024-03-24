@@ -1,15 +1,15 @@
 # Exercícios/Projetos de Orientação a Objeto em Java
 
 ## Exercícios:
-* Getters e Setters
-* Criação de Classe (Livro)
+* [Getters e Setters](#getset)
+* [Criação de Classe (Livro)](#livro)
 * Herança (Veículos) + Objetos Vetores
 * Herança 2 (Produtos)
 * Herança + Interface (Pessoa, Aluno e Professor)
 * Interface (Pagamento de Funcionários)
 * Agrupamento de Objetos
 
-## Getters e Setters
+## Getters e Setters <a name="getset"></a>
 
 ```
 public class Produtos { //Criação da Classe
@@ -74,7 +74,115 @@ public class Produtos { //Criação da Classe
 (...)
 ```
 
-## Criação de Classe (Livro)
+## Criação de Classe (Livro) <a name="livro"></a>
+
+### Criando a Classe
+```
+public class Livro {
+    private int paginas;
+    private int id;
+    private String titulo;
+    private String autor;
+    private String editora;
+    private String codBarra;
+    private String genero;
+
+    public Livro (){
+    }
+
+    public Livro(int paginas,int id,String titulo,String autor,String editora,String codBarra, String genero) {
+        this.paginas = paginas;
+        this.id = id;
+        this.titulo = titulo;
+        this.autor = autor;
+        this.editora = editora;
+        this.codBarra = codBarra;
+        this.genero = genero;
+    }
+
+    public int getPaginas() {
+        return paginas;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public String getTitulo(){
+        return titulo;
+    }
+
+    public String getAutor() {
+        return autor;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public String getCodBarra() {
+        return codBarra;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setPaginas(int paginas){
+        this.paginas = paginas;
+    }
+
+    public void setId(int id){
+        this.id = id;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public void setCodBarra(String codBarra) {
+        this.codBarra = codBarra;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
+
+    @Override
+    public String toString(){
+        return "------------------------------------------------\n Livro (" + id + "): " + titulo + "\n\n Número de Páginas: " + paginas + "\n\n Autor: " + autor + "\n\n Gênero: " + genero + "\n\n Editora: " + editora + "\n\n Código de barras: " + codBarra + "\n------------------------------------------------";
+    }
+}
+```
+
+### Main (Uso dos Construtores)
+```
+public class Main {
+    public static void main(String[] args) {
+
+        Livro[] livro = new Livro[4];
+
+        livro[0] = new Livro(231, 1, "Vagabond Vol. 8", "Takehiko Inoe","Panini","20032-12312", "Histórico/Samurai");
+        livro[1] = new Livro(198, 2, "One Piece Vol. 106", "Eichiro Oda", "Panini", "20032-12313", "Aventura");
+        livro[2] = new Livro(278, 3, "Boa noite Punpun Vol. 7", "Inio Asano", "JBC", "20003-1232", "Drama");
+        livro[3] = new Livro(348, 4, "Ashita no Joe: Em busca pelo Amanhã Vol. 1", "Tetsuya Chiba e Ikki Kajiwara", "New Pop","230203-12334", "Drama/Esporte");
+
+        System.out.println(livro[0].toString() + livro[1].toString() + livro[2].toString() + livro[3].toString());
+
+        System.out.println("\nMelhor de Todos: " + livro[3].getTitulo());
+        System.out.println("\nMelhor Autor: " + livro[1].getAutor());
+
+    }
+}
+```
 
 ## Herança (Veículos) + Objetos Vetores
 

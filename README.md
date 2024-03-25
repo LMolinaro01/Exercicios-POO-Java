@@ -12,7 +12,7 @@
 
 ## Getters e Setters <a name="getset"></a>
 
-```
+``` java
 public class Produtos { //Criação da Classe
 
     private String nome; // quando está private, só é possivel passar os atributos do objeto atrvés de parâmetros e usando o método set
@@ -78,7 +78,7 @@ public class Produtos { //Criação da Classe
 ## Criação de Classe (Livro) <a name="livro"></a>
 
 ### Criando a Classe "Livro":
-```
+``` java
 public class Livro {
     private int paginas;
     private int id;
@@ -127,7 +127,7 @@ public class Livro {
 ```
 
 ### Main (Uso dos Construtores)
-```
+``` java
 public class Main {
     public static void main(String[] args) {
 
@@ -158,6 +158,65 @@ public class Main {
 ## Agrupamento de Objetos
 
 ## Tratamento de Exceções <a name = "tratamentoexcecoes"> </a>
+
+``` java
+public class Main {
+
+    public static double divide(double dividendo, double divisor) throws ArithmeticException { //throws exception (cria uma exceção do erro do tipo aritmético) {
+
+        if (divisor == 0) {
+            throw new ArithmeticException("Divisão por zero!"); //criei minha própria exceção (Obs: exceção não é validação)
+        }
+        return dividendo / divisor;
+    }
+
+    public static void main(String[] args) {
+
+        double resultado;
+
+        try {
+            resultado = divide(10, 0); //Divisor, Dividendo que é zero (tem que dar erro)
+            System.out.println("Resultado da Divisão: " + resultado);
+        }
+
+        //Descrever a ação que ocorrerá quando ocorrer um erro 'catch (tipo_do_erro)'
+        catch (ArithmeticException e) {
+            System.out.println("Exceção Capturada: " + e.getMessage());
+        }
+    }
+}
+
+```    
+
+   - Try: É usado para envolver o código que pode gerar uma exceção. Se uma exceção ocorrer dentro do bloco 'try', o controle do programa é transferido para o bloco 'catch' correspondente.
+   
+   - Catch: É usado para lidar com a exceção que foi lançada dentro do bloco 'try'. O código dentro do bloco 'catch' especifica o que fazer quando uma exceção de um tipo específico é capturada.
+   
+   - Finally: É usado para executar o código que precisa ser executado independentemente de ocorrer ou não uma exceção dentro do bloco 'try'. Por exemplo, é comumente usado para liberar recursos, como fechar conexões com bancos de dados ou arquivos.
+
+   - Throw : A palavra-chave 'throw' é usada para explicitamente lançar uma exceção. Isso é útil quando você detecta um erro em seu código e deseja notificar o chamador do método sobre isso.
+     
+   ``` java
+
+   try {
+       // Código que pode gerar uma exceção
+   } catch (TipoDeExcecao e) {
+       // Tratamento da exceção
+   } finally {
+       // Código a ser executado independentemente de exceções
+   }
+
+   throw new TipoDeExcecao("Mensagem de erro");
+
+   ```
+
+ ### Diferença entre Tratamento de Exceção e Validação:
+
+   - Tratamento de Exceção: O tratamento de exceção é usado para lidar com situações excepcionais ou inesperadas que podem ocorrer durante a execução de um programa. Por exemplo, divisão por zero, acesso a um arquivo que não existe, etc. O tratamento de exceção permite que o programa continue executando, mesmo após encontrar uma exceção.
+
+   - Validação: A validação é usada para verificar se os dados fornecidos estão corretos ou satisfazem certas condições antes de serem processados. Por exemplo, verificar se um número está dentro de um intervalo aceitável, se uma entrada de usuário é válida, etc. A validação é uma parte normal do fluxo de controle do programa e não está relacionada a situações excepcionais. Ela ajuda a garantir a integridade dos dados e a prevenir erros antes mesmo de ocorrerem.
+
+   Em resumo, o tratamento de exceção é usado para lidar com erros que ocorrem durante a execução do programa, enquanto a validação é usada para garantir que os dados fornecidos sejam válidos antes de serem processados. Os dois podem ser utilizados simultâneamente, e podem acabar servindo para a mesma função.
 
 
 

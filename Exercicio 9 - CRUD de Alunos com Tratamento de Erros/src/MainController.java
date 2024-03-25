@@ -120,6 +120,12 @@ public class MainController {
                     float novaNota2 = scanner.nextFloat();
                     estudante.setNota2(novaNota2);
 
+                    float novaMedia = (novaNota2 +novaNota)/2;
+                    estudante.setMedia(novaMedia);
+
+                    String novaAprovacao = estudante.getAprovacao();
+                    estudante.setAprovacao(novaAprovacao);
+
                     alunoEncontrado = true;
                     break;
             }
@@ -129,6 +135,7 @@ public class MainController {
         }
     }
 
+    //olhar no delete como faz com ID e Depois de mudar a nota, a média não é recalculada
 
     /* private void alterarNota() {
         Scanner scanner = new Scanner(System.in);

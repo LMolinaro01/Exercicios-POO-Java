@@ -33,7 +33,7 @@ public class Estudante {
     }
 
     public float getMedia() {
-        return media;
+        return (getNota() + getNota2())/2;
     }
 
     public void setMedia(float media) {
@@ -41,7 +41,12 @@ public class Estudante {
     }
 
     public String getAprovacao() {
-        return aprovacao;
+        if (getMedia() >= 6){
+            return "Aprovado";
+        }
+        else{
+            return "Reprovado";
+        }
     }
 
     public void setAprovacao(String aprovacao) {

@@ -3,7 +3,7 @@
 ## Exercícios:
 * [Getters e Setters](#getset)
 * [Criação de Classe (Livro)](#livro)
-* Herança (Veículos) + Objetos Vetores
+* Herança (Veículos) + Objetos Vetores]
 * Herança 2 (Produtos)
 * Herança + Interface (Pessoa, Aluno e Professor)
 * Interface (Pagamento de Funcionários)
@@ -146,16 +146,6 @@ public class Main {
     }
 }
 ```
-
-## Herança (Veículos) + Objetos Vetores
-
-## Herança 2 (Produtos)
-
-## Herança + Interface (Pessoa, Aluno e Professor)
-
-## Interface (Pagamento de Funcionários)
-
-## Agrupamento de Objetos
 
 ## Tratamento de Exceções <a name = "tratamentoexcecoes"> </a>
 

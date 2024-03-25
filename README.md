@@ -8,6 +8,7 @@
 * Herança + Interface (Pessoa, Aluno e Professor)
 * Interface (Pagamento de Funcionários)
 * Agrupamento de Objetos
+* [Tratamento de Exceções](#tratamentoexcecoes)
 
 ## Getters e Setters <a name="getset"></a>
 
@@ -156,6 +157,7 @@ public class Main {
 
 ## Agrupamento de Objetos
 
+## Tratamento de Exceções <a name = "tratamentoexcecoes"> </a>
 
 
 

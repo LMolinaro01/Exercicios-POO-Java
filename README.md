@@ -217,6 +217,3 @@ public class Main {
    - Validação: A validação é usada para verificar se os dados fornecidos estão corretos ou satisfazem certas condições antes de serem processados. Por exemplo, verificar se um número está dentro de um intervalo aceitável, se uma entrada de usuário é válida, etc. A validação é uma parte normal do fluxo de controle do programa e não está relacionada a situações excepcionais. Ela ajuda a garantir a integridade dos dados e a prevenir erros antes mesmo de ocorrerem.
 
    Em resumo, o tratamento de exceção é usado para lidar com erros que ocorrem durante a execução do programa, enquanto a validação é usada para garantir que os dados fornecidos sejam válidos antes de serem processados. Os dois podem ser utilizados simultâneamente, e podem acabar servindo para a mesma função.
-
-
-

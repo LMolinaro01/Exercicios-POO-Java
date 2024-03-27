@@ -74,20 +74,21 @@ public class MainController {
          }
 
          catch(java.lang.Exception e) {
-             System.out.println("Um Erro Ocorreu. Reinicie o Programa");
+             System.out.println("\n Erro Ocorreu. Reinicie o Programa");
          }
     }
 
     private void cadastrarAluno() {
-        try {
+     try {
 
             Scanner scanner = new Scanner(System.in);
 
             System.out.println("\nDigite a Matricula: ");
             int matricula = scanner.nextInt();
 
+            scanner.nextLine();
             System.out.println("\nDigite o nome: ");
-            String nome = scanner.next();
+            String nome = scanner.nextLine();
 
             System.out.println("\nDigite a Primeira nota: ");
             float nota = scanner.nextFloat();
@@ -119,98 +120,112 @@ public class MainController {
 
         }
         catch(java.lang.Exception e) {
-            System.out.println("Um Erro Ocorreu. Reinicie o Programa");
+            System.out.println("\n Um Erro Ocorreu. Reinicie o Programa");
         }
     }
+
+//    private void alterarNota() {
+//        try {
+//            exibirAlunos();
+//
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.println("Digite o nome do aluno que deseja alterar a nota: ");
+//
+//            String nomePesquisa = scanner.next();
+//            boolean alunoEncontrado = false;
+//
+//            for (Estudante estudante : hm.values()) {
+//                if (estudante.getNome().equalsIgnoreCase(nomePesquisa)) {
+//
+//                    System.out.println("Digite a nova Primeira nota: ");
+//                    float novaNota = scanner.nextFloat();
+//                    estudante.setNota(novaNota);
+//
+//                    System.out.println("Digite a nova Segunda nota: ");
+//                    float novaNota2 = scanner.nextFloat();
+//                    estudante.setNota2(novaNota2);
+//
+//                    float novaMedia = (novaNota2 + novaNota) / 2;
+//                    estudante.setMedia(novaMedia);
+//
+//                    String novaAprovacao = estudante.getAprovacao();
+//                    estudante.setAprovacao(novaAprovacao);
+//
+//                    alunoEncontrado = true;
+//
+//                    System.out.println("A Nota foi alterada com sucesso!");
+//                    System.out.println("Novas notas do Aluno: " + estudante.getNome() + ": (" + estudante.getNota() + ", " + estudante.getNota2() + ")");
+//
+//                    break;
+//                }
+//            }
+//            if (!alunoEncontrado) {
+//                System.out.println("Aluno não encontrado.");
+//            }
+//        }
+//        catch(java.lang.Exception e) {
+//            System.out.println("Um Erro Ocorreu. Reinicie o Programa");
+//        }
+//    }
+
+    //olhar no delete como faz com ID e Depois de mudar a nota, a média não é recalculada
 
     private void alterarNota() {
         try {
+            Scanner scanner2 = new Scanner(System.in);
             exibirAlunos();
 
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Digite o nome do aluno que deseja alterar a nota: ");
+            System.out.println("Digite o ID do aluno que deseja excluir: ");
+            int idNota = scanner2.nextInt();
 
-            String nomePesquisa = scanner.next();
+            // Verifica se o aluno existe no HashMap
+            Estudante idPesquisa = hm.get(idNota);
+
             boolean alunoEncontrado = false;
 
-            for (Estudante estudante : hm.values()) {
-                if (estudante.getNome().equalsIgnoreCase(nomePesquisa)) {
+            Estudante alunoEditar = hm.get(idNota);
+            if (alunoEditar != null) {
+                // Se o aluno existe, solicita confirmação para exclusão
+                System.out.println("\nVocê realmente deseja editar as notas do Aluno (" + idNota + "): " + alunoEditar.getNome() + ", Notas: (" + alunoEditar.getNota() + ", " + alunoEditar.getNota2() + ") ?");
+                System.out.println("\n(Digite (1) para Confirmar ou (2) para Cancelar)");
+                int confirmacao = scanner2.nextInt();
 
-                    System.out.println("Digite a nova Primeira nota: ");
-                    float novaNota = scanner.nextFloat();
-                    estudante.setNota(novaNota);
+                // Confirmação da exclusão
+                for (Estudante estudanteExemplo : hm.values()) {
+                    if (confirmacao == 1) {
+                        System.out.println("Digite a nova Primeira nota: ");
+                        float novaNota = scanner2.nextFloat();
+                        estudanteExemplo.setNota(novaNota);
 
-                    System.out.println("Digite a nova Segunda nota: ");
-                    float novaNota2 = scanner.nextFloat();
-                    estudante.setNota2(novaNota2);
+                        System.out.println("Digite a nova Segunda nota: ");
+                        float novaNota2 = scanner2.nextFloat();
+                        estudanteExemplo.setNota2(novaNota2);
 
-                    float novaMedia = (novaNota2 + novaNota) / 2;
-                    estudante.setMedia(novaMedia);
+                        float novaMedia = (novaNota2 + novaNota) / 2;
+                        estudanteExemplo.setMedia(novaMedia);
 
-                    String novaAprovacao = estudante.getAprovacao();
-                    estudante.setAprovacao(novaAprovacao);
+                        String novaAprovacao = estudanteExemplo.getAprovacao();
+                        estudanteExemplo.setAprovacao(novaAprovacao);
 
-                    alunoEncontrado = true;
-                    break;
+                        alunoEncontrado = true;
+                        System.out.println("\n(As Notas foram alteradas com sucesso!)");
+                        System.out.println("\nNovas notas do Aluno: (" + estudanteExemplo.getNota() + ", " + estudanteExemplo.getNota2() + ")");
+                        break;
+
+                    }
                 }
-            }
-            if (!alunoEncontrado) {
-                System.out.println("Aluno não encontrado.");
+
+                if (!alunoEncontrado) {
+                    System.out.println("Aluno não encontrado.");
+                }
+
             }
         }
         catch(java.lang.Exception e) {
-            System.out.println("Um Erro Ocorreu. Reinicie o Programa");
+            System.out.println("\nUm Erro Ocorreu. Reinicie o Programa");
         }
     }
 
-    //olhar no delete como faz com ID e Depois de mudar a nota, a média não é recalculada
-    /*
-    private void alterarNota() {
-    Scanner scanner = new Scanner(System.in);
-    exibirAlunos();
-
-    System.out.println("Digite o ID do aluno que deseja excluir: ");
-    int id = scanner.nextInt();
-
-    // Verifica se o aluno existe no HashMap
-    Estudante idPesquisa = hm.get(id);
-
-    boolean alunoEncontrado = false;
-
-    Estudante alunoEditar = hm.get(id);
-    if (alunoEditar != null) {
-        // Se o aluno existe, solicita confirmação para exclusão
-        System.out.println("Você realmente deseja editar as notas do Aluno (" + id + "): " + alunoEditar.getNome() + ", Notas: (" + alunoEditar.getNota() + ", " + alunoEditar.getNota2() + ") ?");
-        System.out.println("Digite (1) para Confirmar ou (2) para Cancelar.");
-        int confirmacao = scanner.nextInt();
-
-        // Confirmação da exclusão
-        for (Estudante estudante : hm.values()) {
-            if (confirmacao == 1) {
-                System.out.println("Digite a nova Primeira nota: ");
-                float novaNota = scanner.nextFloat();
-                Estudante.setNota(novaNota);
-
-                System.out.println("Digite a nova Segunda nota: ");
-                float novaNota2 = scanner.nextFloat();
-                Estudante.setNota2(novaNota2);
-
-                float novaMedia = (novaNota2 +novaNota)/2;
-                Estudante.setMedia(novaMedia);
-
-                String novaAprovacao = Estudante.getAprovacao();
-                Estudante.setAprovacao(novaAprovacao);
-
-                alunoEncontrado = true;
-                break;
-            }
-        }
-
-        if (!alunoEncontrado){
-            System.out.println("Aluno não encontrado.");
-        }
-
-    } */
 
     private void excluirAluno() {
         try {
@@ -243,7 +258,7 @@ public class MainController {
         }
 
         catch(java.lang.Exception e) {
-                System.out.println("Um Erro Ocorreu. Reinicie o Programa");
+                System.out.println("\nUm Erro Ocorreu. Reinicie o Programa");
             }
         }
 

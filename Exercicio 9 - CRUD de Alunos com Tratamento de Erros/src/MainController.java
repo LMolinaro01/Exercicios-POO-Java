@@ -50,8 +50,10 @@ public class MainController {
 
     private void exibirAlunos() {
          try {
+             System.out.println("\n---------- Exibição dos Alunos ----------\n");
              if (!hm.isEmpty()) { // Verifica se o HashMap não está vazio.
                  hm.forEach((key, value) -> { // Itera sobre cada entrada no HashMap.
+
                      System.out.println("ID: " + key);
 
                      System.out.println("\nMatricula: " + value.getMatricula());
@@ -80,21 +82,56 @@ public class MainController {
 
     private void cadastrarAluno() {
      try {
-
+         float nota, nota2;
             Scanner scanner = new Scanner(System.in);
 
+            System.out.println("\n---------- Cadastro do Novo Aluno ----------");
             System.out.println("\nDigite a Matricula: ");
             int matricula = scanner.nextInt();
 
             scanner.nextLine();
             System.out.println("\nDigite o nome: ");
             String nome = scanner.nextLine();
+         do {
+             boolean notaTypeCorreto = true; // Variável para controlar se a nota é do tipo correto
 
-            System.out.println("\nDigite a Primeira nota: ");
-            float nota = scanner.nextFloat();
+             System.out.println("\nDigite a Primeira nota: ");
 
-            System.out.println("\nDigite a Segunda nota: ");
-            float nota2 = scanner.nextFloat();
+             if (scanner.hasNextFloat()) { // Verifica se a entrada é um número float
+                 nota = scanner.nextFloat();
+                 if (nota < 0 || nota > 10) { // Verifica se a nota está dentro do intervalo correto
+                     System.out.println("\nErro: Por favor, digite uma nota entre 0 e 10.");
+                     notaTypeCorreto = false;
+                     continue;
+                 }
+             } else {
+                 System.out.println("\nErro: Por favor, digite um número float válido.");
+                 scanner.next(); // Limpa o buffer de entrada
+                 notaTypeCorreto = false; // Define a flag para indicar que a entrada é inválida
+                 continue; // Volta ao início do loop
+             }
+
+             System.out.println("\nDigite a Segunda nota: ");
+
+             if (scanner.hasNextFloat()) { // Verifica se a entrada é um número float
+                 nota2 = scanner.nextFloat();
+                 if (nota2 < 0 || nota2 > 10) { // Verifica se a nota está dentro do intervalo correto
+                     System.out.println("\nErro: Por favor, digite uma nota entre 0 e 10.");
+                     notaTypeCorreto = false;
+                     continue;
+                 }
+             } else {
+                 System.out.println("\nErro: Por favor, digite um número float válido.");
+                 scanner.next();
+                 notaTypeCorreto = false;
+                 continue;
+             }
+
+             // Se ambas as notas forem do tipo correto, sai do loop
+             if (notaTypeCorreto) {
+                 break;
+             }
+         } while (true);
 
             float media = (nota + nota2) / 2;
 
@@ -106,7 +143,7 @@ public class MainController {
                 aprovacao = "Reprovado";
             }
 
-            System.out.println("---------- Aluno Cadastrado com Sucesso! ----------");
+            System.out.println("\n(Aluno Cadastrado com Sucesso!): ");
 
             System.out.println("\nMatricula: " + matricula);
             System.out.println("\nNome: " + nome);
@@ -114,7 +151,6 @@ public class MainController {
             System.out.println("\nSegunda Nota: " + nota2);
             System.out.println("\nMedia: " + media);
             System.out.println("\nStatus de Aprovação: " + aprovacao);
-            System.out.println("---------------------------------------\n\n");
 
             hm.put(chave++, new Estudante(matricula, nome, nota, nota2, media, aprovacao));
 
@@ -124,57 +160,12 @@ public class MainController {
         }
     }
 
-//    private void alterarNota() {
-//        try {
-//            exibirAlunos();
-//
-//            Scanner scanner = new Scanner(System.in);
-//            System.out.println("Digite o nome do aluno que deseja alterar a nota: ");
-//
-//            String nomePesquisa = scanner.next();
-//            boolean alunoEncontrado = false;
-//
-//            for (Estudante estudante : hm.values()) {
-//                if (estudante.getNome().equalsIgnoreCase(nomePesquisa)) {
-//
-//                    System.out.println("Digite a nova Primeira nota: ");
-//                    float novaNota = scanner.nextFloat();
-//                    estudante.setNota(novaNota);
-//
-//                    System.out.println("Digite a nova Segunda nota: ");
-//                    float novaNota2 = scanner.nextFloat();
-//                    estudante.setNota2(novaNota2);
-//
-//                    float novaMedia = (novaNota2 + novaNota) / 2;
-//                    estudante.setMedia(novaMedia);
-//
-//                    String novaAprovacao = estudante.getAprovacao();
-//                    estudante.setAprovacao(novaAprovacao);
-//
-//                    alunoEncontrado = true;
-//
-//                    System.out.println("A Nota foi alterada com sucesso!");
-//                    System.out.println("Novas notas do Aluno: " + estudante.getNome() + ": (" + estudante.getNota() + ", " + estudante.getNota2() + ")");
-//
-//                    break;
-//                }
-//            }
-//            if (!alunoEncontrado) {
-//                System.out.println("Aluno não encontrado.");
-//            }
-//        }
-//        catch(java.lang.Exception e) {
-//            System.out.println("Um Erro Ocorreu. Reinicie o Programa");
-//        }
-//    }
-
-    //olhar no delete como faz com ID e Depois de mudar a nota, a média não é recalculada
-
     private void alterarNota() {
         try {
             Scanner scanner2 = new Scanner(System.in);
             exibirAlunos();
 
+            System.out.println("\n---------- Alteração de Nota ----------\n");
             System.out.println("Digite o ID do aluno que deseja excluir: ");
             int idNota = scanner2.nextInt();
 
@@ -216,7 +207,7 @@ public class MainController {
                 }
 
                 if (!alunoEncontrado) {
-                    System.out.println("Aluno não encontrado.");
+                    System.out.println("\nAluno não encontrado.");
                 }
 
             }
@@ -232,6 +223,7 @@ public class MainController {
             Scanner scanner = new Scanner(System.in);
             exibirAlunos();
 
+            System.out.println("\n---------- Exclusão de um Aluno ----------\n");
             System.out.println("Digite o ID do aluno que deseja excluir: ");
             int id = scanner.nextInt();
 
@@ -239,21 +231,21 @@ public class MainController {
             Estudante alunoExcluir = hm.get(id);
             if (alunoExcluir != null) {
                 // Se o aluno existe, solicita confirmação para exclusão
-                System.out.println("Você realmente deseja excluir o Aluno (" + id + "): " + alunoExcluir.getNome() + " ?");
-                System.out.println("Digite (1) para Confirmar ou (2) para Cancelar.");
+                System.out.println("\nVocê realmente deseja excluir o Aluno (" + id + "): " + alunoExcluir.getNome() + " ?");
+                System.out.println("\nDigite (1) para Confirmar ou (2) para Cancelar.");
                 int confirmacao = scanner.nextInt();
 
                 // Confirmação da exclusão
                 if (confirmacao == 1) {
                     // Remove o aluno do HashMap
                     Estudante alunoRemovido = hm.remove(id);
-                    System.out.println("Aluno removido com sucesso:");
+                    System.out.println("\nAluno removido com sucesso:");
                     System.out.println(alunoRemovido);
                 } else {
-                    System.out.println("Aluno não removido.");
+                    System.out.println("\nAluno não removido.");
                 }
             } else {
-                System.out.println("Aluno não encontrado.");
+                System.out.println("\nAluno não encontrado.");
             }
         }
 

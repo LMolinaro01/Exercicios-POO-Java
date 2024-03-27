@@ -10,13 +10,13 @@ public class MainView {
     public int exibirMenu() {
 
         System.out.println("_______________________");
-        System.out.println("Escolha a Opção: ");
+        System.out.println("Escolha a Opção: \n");
         System.out.println("Opção 1 - Cadastro do Aluno e suas Notas");
         System.out.println("Opção 2 - Exibir os Alunos");
         System.out.println("Opção 3 - Alterar nota");
         System.out.println("Opção 4 - Excluir alunos");
         System.out.println("Opção 0 - Sair do programa");
-        System.out.println("_______________________");
+        System.out.println("\n_______________________");
         System.out.print("Digite a opção: ");
 
         return scanner.nextInt();

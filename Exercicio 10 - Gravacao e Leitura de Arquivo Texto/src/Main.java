@@ -8,7 +8,7 @@ public class Main {
             escrever = new FileWriter("arquivo.txt");
             escrever.write("Meu nome é Leonardo");
         } catch (IOException e){
-            e.printStackTrace();
+            e.printStackTrace(); //imprime uma representação textual da pilha de chamadas no momento da exceção, fornecendo informações sobre onde e por que a exceção ocorreu, facilitando a depuração do código
         } finally {
             try {
                 escrever.close();

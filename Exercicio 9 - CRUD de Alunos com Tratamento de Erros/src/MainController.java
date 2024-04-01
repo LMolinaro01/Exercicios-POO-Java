@@ -184,7 +184,7 @@ public class MainController {
                 // Confirmação da exclusão
                 for (Estudante estudanteExemplo : hm.values()) {
                     if (confirmacao == 1) {
-                        System.out.println("Digite a nova Primeira nota: ");
+                        System.out.println("Digite a nova Primeira nota: "); //fazer com que só pode digitar Float e nota de 0 a 10
                         float novaNota = scanner2.nextFloat();
                         estudanteExemplo.setNota(novaNota);
 

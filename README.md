@@ -9,6 +9,8 @@
 * Interface (Pagamento de Funcionários)
 * Agrupamento de Objetos
 * [Tratamento de Exceções](#tratamentoexcecoes)
+* Crud de Alunos
+* Criação de um arquivo local
 
 ## Getters e Setters <a name="getset"></a>
 

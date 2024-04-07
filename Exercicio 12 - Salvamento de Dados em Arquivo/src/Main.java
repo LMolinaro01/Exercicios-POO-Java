@@ -18,7 +18,7 @@ public class Main {
 
         try (FileWriter writer = new FileWriter(nomeArquivo)) {
             for (Pessoa pessoa : pessoas) {
-                writer.write(pessoa.getNome() + "," + pessoa.getIdade() + "\n");
+                writer.write("Nome: "+ pessoa.getNome() + "\nIdade:" + pessoa.getIdade() + "\n");
             }
             System.out.println("Dados das pessoas foram salvos com sucesso no arquivo: " + nomeArquivo);
         } catch (IOException e) {

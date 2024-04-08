@@ -6,7 +6,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Pessoa> pessoas = new ArrayList<>();
-        pessoas.add(new Pessoa("João", 30));
+        pessoas.add(new Pessoa("Leonardo", 19));
         pessoas.add(new Pessoa("Maria", 25));
         pessoas.add(new Pessoa("Carlos", 40));
 

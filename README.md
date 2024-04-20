@@ -1,5 +1,9 @@
 # Exercícios/Projetos de Orientação a Objeto em Java
 
+# Projetos
+
+* [Registro e Gerenciamento de Pacientes - Fisioterapia (Projeto Extensionista)](https://github.com/LMolinaro01/Registro-e-Gerenciamento-de-Pacientes)
+
 ## Exercícios:
 * [Getters e Setters](#getset)
 * [Criação de Classe (Livro)](#livro)

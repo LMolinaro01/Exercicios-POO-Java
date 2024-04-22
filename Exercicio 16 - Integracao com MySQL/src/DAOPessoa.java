@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+//CRUD da tabela Pessoas
+
 //ao invés de utilizar a função close() pode-se utilizar o AutoClosable
 //Exemplo: public class DAOPessoa implements AutoCloseable
 public class DAOPessoa implements AutoCloseable{

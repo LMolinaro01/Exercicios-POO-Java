@@ -13,23 +13,40 @@ public class UsuarioDAO {
     private static final String CREATE_TABLE_SQL = "CREATE TABLE IF NOT EXISTS usuarios (id INTEGER PRIMARY KEY AUTOINCREMENT, nome TEXT, email TEXT)";
     private static final String INSERT_USUARIO_SQL = "INSERT INTO usuarios (nome, email) VALUES (?,?)";
     private static final String SELECT_ALL_USUARIOS_SQL = "SELECT * FROM usuarios";
-    private static final String UPDATE_USUARIO_SQL = "UPDATE usuario SET nome = ?, email = ? WHERE id = ?";
+    private static final String UPDATE_USUARIO_SQL = "UPDATE usuarios SET nome = ?, email = ? WHERE id = ?";
     private static final String DELETE_USUARIO_SQL = "DELETE FROM usuarios WHERE id = ?";
 
+    private static Connection connection;
+
+    static {
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_FILE);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void fecharConexao() {
+        try {
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static void criarTabela() {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_FILE);
-             Statement statement = connection.createStatement()) {
-
+        try (Statement statement = connection.createStatement()) {
             statement.executeUpdate(CREATE_TABLE_SQL);
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     public static void adicionarUsuario(Usuario usuario) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_FILE);
-             PreparedStatement statement = connection.prepareStatement(INSERT_USUARIO_SQL)) {
+        try (PreparedStatement statement = connection.prepareStatement(INSERT_USUARIO_SQL)) {
             statement.setString(1, usuario.getNome());
             statement.setString(2, usuario.getEmail());
             statement.executeUpdate();
@@ -39,8 +56,7 @@ public class UsuarioDAO {
     }
 
     public static void atualizarUsuario(Usuario usuario) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_FILE);
-             PreparedStatement statement = connection.prepareStatement(UPDATE_USUARIO_SQL)) {
+        try (PreparedStatement statement = connection.prepareStatement(UPDATE_USUARIO_SQL)) {
             statement.setString(1, usuario.getNome());
             statement.setString(2, usuario.getEmail());
             statement.setInt(3, usuario.getId());
@@ -52,8 +68,7 @@ public class UsuarioDAO {
 
     public static List<Usuario> listarUsuarios() {
         List<Usuario> usuarios = new ArrayList<>();
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_FILE);
-             Statement statement = connection.createStatement();
+        try (Statement statement = connection.createStatement();
              ResultSet resultSet = statement.executeQuery(SELECT_ALL_USUARIOS_SQL)) {
             while (resultSet.next()) {
                 Usuario usuario = new Usuario();
@@ -69,8 +84,7 @@ public class UsuarioDAO {
     }
 
     public static void excluirUsuario(int id) {
-        try (Connection connection = DriverManager.getConnection("jdbc:sqlite:" + DATABASE_FILE);
-             PreparedStatement statement = connection.prepareStatement(DELETE_USUARIO_SQL)) {
+        try (PreparedStatement statement = connection.prepareStatement(DELETE_USUARIO_SQL)) {
             statement.setInt(1, id);
             statement.executeUpdate();
         } catch (SQLException e) {

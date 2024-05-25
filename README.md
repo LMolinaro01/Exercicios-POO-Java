@@ -8,13 +8,13 @@
 * [Getters e Setters](#getset)
 * [Criação de Classe (Livro)](#livro)
 * [Tratamento de Exceções](#tratamentoexcecoes)
-* Herança (Veículos) + Objetos Vetores]
+<!--* Herança (Veículos) + Objetos Vetores]
 * Herança 2 (Produtos)
 * Herança + Interface (Pessoa, Aluno e Professor)
 * Interface (Pagamento de Funcionários)
 * Agrupamento de Objetos
 * Crud de Alunos
-* Criação de um arquivo local
+* Criação de um arquivo local -->
 
 ## Getters e Setters <a name="getset"></a>
 

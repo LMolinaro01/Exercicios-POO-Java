@@ -9,6 +9,7 @@
 * [Criação de Classe (Livro)](#livro)
 * [Tratamento de Exceções](#tratamentoexcecoes)
 * [Manipulação de String e Regex](#regex)
+* [Salvamento de Dados em Arquivo](#salvamento)
 
 ## Getters e Setters <a name="getset"></a>
 
@@ -252,3 +253,74 @@ public class Main {
 
 ### Explicação
 Neste exercício, você irá praticar a manipulação de strings e o uso de expressões regulares (regex) em Java. Você aprenderá a usar a classe `Pattern` para compilar expressões regulares e a classe `Matcher` para encontrar padrões dentro de strings. O exemplo dado mostra como encontrar palavras específicas e validar endereços de e-mail.
+
+---
+
+## Salvamento de Dados em Arquivo <a name="salvamento"></a>
+
+### Código de Exemplo
+#### Main
+```java
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Main {
+    public static void main(String[] args) {
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Leonardo", 19));
+        pessoas.add(new Pessoa("Maria", 25));
+        pessoas.add(new Pessoa("Carlos", 40));
+
+        salvarPessoas(pessoas);
+    }
+
+    public static void
+
+ salvarPessoas(List<Pessoa> pessoas) {
+        String nomeArquivo = "pessoas.txt";
+
+        try (FileWriter writer = new FileWriter(nomeArquivo)) {
+            for (Pessoa pessoa : pessoas) {
+                writer.write("Nome: "+ pessoa.getNome() + "\nIdade:" + pessoa.getIdade() + "\n");
+            }
+            System.out.println("Dados das pessoas foram salvos com sucesso no arquivo: " + nomeArquivo);
+        } catch (IOException e) {
+            System.err.println("Erro ao salvar dados das pessoas: " + e.getMessage());
+        }
+    }
+}
+```
+
+#### Pessoa
+```java
+public class Pessoa {
+    private String nome;
+    private int idade;
+
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+}
+```
+
+### Explicação
+Neste exercício, você irá praticar o salvamento de dados em um arquivo em Java. O exemplo mostra como criar uma lista de objetos da classe `Pessoa`, contendo atributos `nome` e `idade`. Em seguida, os dados dessas pessoas são salvos em um arquivo texto chamado `pessoas.txt`. O código utiliza a classe `FileWriter` para escrever os dados no arquivo e inclui tratamento de exceções para lidar com possíveis erros durante o processo de escrita.

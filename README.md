@@ -1,6 +1,6 @@
 # Exercícios/Projetos de Orientação a Objeto em Java
 
-# Projetos
+## Projetos
 
 * [Registro e Gerenciamento de Pacientes - Fisioterapia (Projeto Extensionista)](https://github.com/LMolinaro01/Registro-e-Gerenciamento-de-Pacientes)
 
@@ -8,43 +8,32 @@
 * [Getters e Setters](#getset)
 * [Criação de Classe (Livro)](#livro)
 * [Tratamento de Exceções](#tratamentoexcecoes)
-<!--* Herança (Veículos) + Objetos Vetores]
-* Herança 2 (Produtos)
-* Herança + Interface (Pessoa, Aluno e Professor)
-* Interface (Pagamento de Funcionários)
-* Agrupamento de Objetos
-* Crud de Alunos
-* Criação de um arquivo local -->
 
 ## Getters e Setters <a name="getset"></a>
 
-``` java
-public class Produtos { //Criação da Classe
+### Código de Exemplo
+```java
+public class Produtos { // Criação da Classe
 
-    private String nome; // quando está private, só é possivel passar os atributos do objeto atrvés de parâmetros e usando o método set
-
+    private String nome; // Atributo privado
     private String marca;
     private float valor;
     private int qtde;
 
-    /*Atributos Privados: Acessíveis apenas dentro da própria classe Produtos. Isso, encapsula o estado interno da classe e evita acessos diretos externos */
+    // Construtor padrão
+    public Produtos() {}
 
-    public Produtos() {
-    } // Ao instanciar o objeto, será necessário usar o set para passar os atributos necessários
-
+    // Construtor com parâmetros
     public Produtos(String nome, String marca, float valor, int qtde) {
         this.nome = nome;
-        this.marca = marca; // utiliza-se o this para igualar a variavel do parâmetro com a variável declarada na linha 4
-
+        this.marca = marca;
         this.valor = valor;
         this.qtde = qtde;
-        // Construtor que usa parâmetros ao instanciar o objeto
     }
 
-
+    // Métodos setters
     public void setNome(String nome) {
-        this.nome = nome; // permite passar os atributos, antes era apenas por parâmetro, visto que a variável era privada.
-
+        this.nome = nome;
     }
 
     public void setMarca(String marca) {
@@ -55,44 +44,54 @@ public class Produtos { //Criação da Classe
         this.valor = valor;
     }
 
-    public void setQtde(int qtde){
-        if (qtde > 0){
-            this.qtde = qtde; //(continuação da linha 19) Além disso, dá pra colocar condições do que pode entrar na variável (Ex: Limite de qtde)
-        }
-
-        else {
+    public void setQtde(int qtde) {
+        if (qtde > 0) {
+            this.qtde = qtde;
+        } else {
             System.out.println("Erro, quantidade inválida!");
             System.exit(0);
         }
-
     }
 
-    //Método Get: é fornecido para permitir que outras classes obtenham esses valores de forma controlada. Isso é uma comum prática de encapsulamento para fornecer acesso controlado aos atributos privados.
-
+    // Métodos getters
     public String getNome() {
-        return this.nome; // Retorna a variável nome, ela não é retornável ao privar a variável nome da linha 3
-
+        return this.nome;
     }
 
     public String getMarca() {
         return this.marca;
     }
 
-(...)
+    public float getValor() {
+        return this.valor;
+    }
+
+    public int getQtde() {
+        return this.qtde;
+    }
+}
 ```
+
+### Explicação
+Neste exercício, você irá praticar a criação de métodos getters e setters em uma classe de produtos. Os métodos getters e setters são usados para acessar e modificar os atributos privados de uma classe, encapsulando o estado interno da classe e evitando acessos diretos externos.
+
+---
 
 ## Criação de Classe (Livro) <a name="livro"></a>
 
-### Criando a Classe "Livro":
-``` java
+### Criando a Classe "Livro"
+```java
 public class Livro {
     private int paginas;
     private int id;
     private String titulo;
+    private String autor;
+    private String editora;
+    private String codBarra;
+    private String genero;
 
-    (...)
-
-    public Livro(int paginas,int id,String titulo,String autor,String editora,String codBarra, String genero) {
+    // Construtor com parâmetros
+    public Livro(int paginas, int id, String titulo, String autor, String editora, String codBarra, String genero) {
         this.paginas = paginas;
         this.id = id;
         this.titulo = titulo;
@@ -102,6 +101,7 @@ public class Livro {
         this.genero = genero;
     }
 
+    // Métodos getters
     public int getPaginas() {
         return paginas;
     }
@@ -110,33 +110,33 @@ public class Livro {
         return id;
     }
 
-    public String getTitulo(){
+    public String getTitulo() {
         return titulo;
     }
 
-   (...)
+    public String getAutor() {
+        return autor;
+    }
 
-    public void setPaginas(int paginas){
+    // Métodos setters
+    public void setPaginas(int paginas) {
         this.paginas = paginas;
     }
 
-    public void setId(int id){
+    public void setId(int id) {
         this.id = id;
     }
 
     public void setAutor(String autor) {
         this.autor = autor;
     }
-
-  (...)
 }
 ```
 
 ### Main (Uso dos Construtores)
-``` java
+```java
 public class Main {
     public static void main(String[] args) {
-
         Livro[] livro = new Livro[4];
 
         livro[0] = new Livro(231, 1, "Vagabond Vol. 8", "Takehiko Inoe","Panini","20032-12312", "Histórico/Samurai");
@@ -148,68 +148,50 @@ public class Main {
 
         System.out.println("\nMelhor de Todos: " + livro[3].getTitulo());
         System.out.println("\nMelhor Autor: " + livro[1].getAutor());
-
     }
 }
 ```
 
-## Tratamento de Exceções <a name = "tratamentoexcecoes"> </a>
+### Explicação
+Neste exercício, você irá criar uma classe que representa um livro, incluindo atributos como título, autor, número de páginas, entre outros. Você também irá praticar a criação de métodos construtores, getters e setters, e a utilização destes em uma classe principal.
 
-``` java
+---
+
+## Tratamento de Exceções <a name="tratamentoexcecoes"></a>
+
+### Código de Exemplo
+```java
 public class Main {
 
-    public static double divide(double dividendo, double divisor) throws ArithmeticException { //throws exception (cria uma exceção do erro do tipo aritmético) {
-
+    public static double divide(double dividendo, double divisor) throws ArithmeticException {
         if (divisor == 0) {
-            throw new ArithmeticException("Divisão por zero!"); //criei minha própria exceção (Obs: exceção não é validação)
+            throw new ArithmeticException("Divisão por zero!"); // Lança uma exceção personalizada
         }
         return dividendo / divisor;
     }
 
     public static void main(String[] args) {
-
         double resultado;
 
         try {
-            resultado = divide(10, 0); //Divisor, Dividendo que é zero (tem que dar erro)
+            resultado = divide(10, 0); // Divisor é zero, o que causa uma exceção
             System.out.println("Resultado da Divisão: " + resultado);
-        }
-
-        //Descrever a ação que ocorrerá quando ocorrer um erro 'catch (tipo_do_erro)'
-        catch (ArithmeticException e) {
+        } catch (ArithmeticException e) {
             System.out.println("Exceção Capturada: " + e.getMessage());
         }
     }
 }
+```
 
-```    
+### Explicação
+Neste exercício, você irá aprender sobre o tratamento de exceções em Java. Exceções são usadas para lidar com situações inesperadas que podem ocorrer durante a execução de um programa, como divisão por zero. Você irá usar blocos `try`, `catch`, e `throw` para tratar exceções de forma apropriada.
 
-   - Try: É usado para envolver o código que pode gerar uma exceção. Se uma exceção ocorrer dentro do bloco 'try', o controle do programa é transferido para o bloco 'catch' correspondente.
-   
-   - Catch: É usado para lidar com a exceção que foi lançada dentro do bloco 'try'. O código dentro do bloco 'catch' especifica o que fazer quando uma exceção de um tipo específico é capturada.
-   
-   - Finally: É usado para executar o código que precisa ser executado independentemente de ocorrer ou não uma exceção dentro do bloco 'try'. Por exemplo, é comumente usado para liberar recursos, como fechar conexões com bancos de dados ou arquivos.
+---
 
-   - Throw : A palavra-chave 'throw' é usada para explicitamente lançar uma exceção. Isso é útil quando você detecta um erro em seu código e deseja notificar o chamador do método sobre isso.
-     
-   ``` java
+## Diferença entre Tratamento de Exceção e Validação
+- **Tratamento de Exceção:** Lida com situações excepcionais ou inesperadas durante a execução de um programa. Permite que o programa continue executando mesmo após encontrar uma exceção.
+- **Validação:** Verifica se os dados fornecidos estão corretos ou satisfazem certas condições antes de serem processados. Garante a integridade dos dados e previne erros antes de ocorrerem.
 
-   try {
-       // Código que pode gerar uma exceção
-   } catch (TipoDeExcecao e) {
-       // Tratamento da exceção
-   } finally {
-       // Código a ser executado independentemente de exceções
-   }
+---
 
-   throw new TipoDeExcecao("Mensagem de erro");
-
-   ```
-
- ### Diferença entre Tratamento de Exceção e Validação:
-
-   - Tratamento de Exceção: O tratamento de exceção é usado para lidar com situações excepcionais ou inesperadas que podem ocorrer durante a execução de um programa. Por exemplo, divisão por zero, acesso a um arquivo que não existe, etc. O tratamento de exceção permite que o programa continue executando, mesmo após encontrar uma exceção.
-
-   - Validação: A validação é usada para verificar se os dados fornecidos estão corretos ou satisfazem certas condições antes de serem processados. Por exemplo, verificar se um número está dentro de um intervalo aceitável, se uma entrada de usuário é válida, etc. A validação é uma parte normal do fluxo de controle do programa e não está relacionada a situações excepcionais. Ela ajuda a garantir a integridade dos dados e a prevenir erros antes mesmo de ocorrerem.
-
-   Em resumo, o tratamento de exceção é usado para lidar com erros que ocorrem durante a execução do programa, enquanto a validação é usada para garantir que os dados fornecidos sejam válidos antes de serem processados. Os dois podem ser utilizados simultâneamente, e podem acabar servindo para a mesma função.
+Este README fornece uma explicação clara e exemplos de código para cada exercício, ajudando a entender os conceitos de Orientação a Objetos em Java.

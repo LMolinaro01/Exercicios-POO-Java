@@ -8,6 +8,7 @@
 * [Getters e Setters](#getset)
 * [Criação de Classe (Livro)](#livro)
 * [Tratamento de Exceções](#tratamentoexcecoes)
+* [Manipulação de String e Regex](#regex)
 
 ## Getters e Setters <a name="getset"></a>
 
@@ -188,10 +189,66 @@ Neste exercício, você irá aprender sobre o tratamento de exceções em Java. 
 
 ---
 
-## Diferença entre Tratamento de Exceção e Validação
-- **Tratamento de Exceção:** Lida com situações excepcionais ou inesperadas durante a execução de um programa. Permite que o programa continue executando mesmo após encontrar uma exceção.
-- **Validação:** Verifica se os dados fornecidos estão corretos ou satisfazem certas condições antes de serem processados. Garante a integridade dos dados e previne erros antes de ocorrerem.
+## Manipulação de String e Regex <a name="regex"></a>
 
----
+### Código de Exemplo
+```java
+import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-Este README fornece uma explicação clara e exemplos de código para cada exercício, ajudando a entender os conceitos de Orientação a Objetos em Java.
+public class Main {
+    public static void main(String[] args) {
+
+        String texto = "Meu nome é Leonardo e gosto de livros";
+
+        try {
+            Pattern pattern = Pattern.compile("\\bLeonardo\\b");
+            Matcher matcher = pattern.matcher(texto);
+
+            while (matcher.find()) {
+                System.out.println("Encontrou a palavra Leonardo a partir do caractere: " + matcher.start());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("Um Erro ocorreu na Manipulação de String");
+        }
+
+        String texto2 = "O e-mail do usuário é leo@email.com, seu outro e-mail é invalido@nãoexiste";
+
+        try {
+            // Expressão para validar o email
+            String regexEmail = "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b";
+            // Compilar a expressao regular em um padrão
+            Pattern patternEmail = Pattern.compile(regexEmail);
+            // Criar um matcher para a expressao regular
+            Matcher matcherEmail = patternEmail.matcher(texto2);
+
+            // iterar sobre as correspondencias encontradas
+            while (matcherEmail.find()) {
+                System.out.println("E-mail encontrado: " + matcherEmail.group());
+            }
+
+        } catch (Exception e) {
+            System.out.println("Um Erro ocorreu na Manipulação de String (E-mail)");
+            e.printStackTrace();
+        }
+
+        try {
+            String regexNome = "\\bleo\\b";
+            Pattern patternNome = Pattern.compile(regexNome);
+            Matcher matcherNome = patternNome.matcher(texto2);
+
+            while (matcherNome.find()) {
+                System.out.println("Nome encontrado: " + matcherNome.group());
+            }
+        } catch (Exception e) {
+            System.out.println("Um Erro ocorreu na Manipulação de String (Nome)");
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Explicação
+Neste exercício, você irá praticar a manipulação de strings e o uso de expressões regulares (regex) em Java. Você aprenderá a usar a classe `Pattern` para compilar expressões regulares e a classe `Matcher` para encontrar padrões dentro de strings. O exemplo dado mostra como encontrar palavras específicas e validar endereços de e-mail.

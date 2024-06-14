@@ -6,7 +6,7 @@
 
 ## Exercícios:
 * [Getters e Setters](#getset)
-* [Criação de Classe (Livro)](#livro)
+* [Criação de Classe](#livro)
 * [Tratamento de Exceções](#tratamentoexcecoes)
 * [Manipulação de String e Regex](#regex)
 * [Salvamento de Dados em Arquivo](#salvamento)

@@ -154,9 +154,6 @@ public class Main {
 }
 ```
 
-### Explicação
-Neste exercício, você irá criar uma classe que representa um livro, incluindo atributos como título, autor, número de páginas, entre outros. Você também irá praticar a criação de métodos construtores, getters e setters, e a utilização destes em uma classe principal.
-
 ---
 
 ## Tratamento de Exceções <a name="tratamentoexcecoes"></a>
